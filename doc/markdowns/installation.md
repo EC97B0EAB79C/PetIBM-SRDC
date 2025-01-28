@@ -19,6 +19,7 @@ mamba create \
     "git" \
     "gxx_linux-64>=11.2"
 conda activate petibm
+mamba install -c nvidia cuda-toolkit
 ```
 
 ## Build
@@ -38,6 +39,10 @@ cmake \
     -DPETIBM_ENABLE_TESTS=ON \
     -DPETIBM_USE_AMGX=ON \
     ..
+make all -j $(nproc)
+make check
+make install
+export PATH=/home/choi/sfw/petibm/petibm-linux-dbg/bin:$PATH
 ```
 
 <!--
