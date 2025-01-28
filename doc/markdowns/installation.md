@@ -1,5 +1,106 @@
 # Installation
 
+## Setup
+```bash
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+bash Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
+source miniforge/bin/activate
+mamba create \
+    -n petibm \
+    -c barbagroup \
+    -c nvidia \
+    -c conda-forge \
+    "*amgxwrapper=*=cuda114*" \
+    "yaml-cpp>=0.7" \
+    "symengine>=0.9" \
+    "cmake>=3.23" \
+    "make" \
+    "pkg-config" \
+    "git" \
+    "gxx_linux-64>=11.2"
+conda activate petibm
+```
+
+## Build
+```
+mkdir build && cd build
+cmake \
+    -DCMAKE_INSTALL_PREFIX=$HOME/sfw/petibm/petibm-linux-dbg \
+    -DCMAKE_CXX_COMPILER=${CXX} \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DPETSC_DIR=$CONDA_PREFIX \
+    -DPETSC_ARCH="" \
+    -DCUDA_DIR=$CONDA_PREFIX \
+    -DAMGX_DIR=$CONDA_PREFIX \
+    -DAMGXWRAPPER_DIR=$CONDA_PREFIX \
+    -DYAMLCPP_DIR=$CONDA_PREFIX \
+    -DSYMENGINE_DIR=$CONDA_PREFIX \
+    -DPETIBM_ENABLE_TESTS=ON \
+    -DPETIBM_USE_AMGX=ON \
+    ..
+```
+
+<!--
+## Environment Setup
+```bash
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+bash Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
+source miniforge/bin/activate
+mamba create -n petibm -c barbagroup -c nvidia -c conda-forge \
+    "cmake>=3.23" make pkg-config git gxx_linux-64=11.2 \
+    "yaml-cpp>=0.7" "symengine>=0.9" "h5py>=3.0" numpy \
+    mpich=4.2.3 \
+    cudatoolkit=12.6
+conda activate petibm
+mamba install -c conda-forge python=3.9
+# mamba install -c conda-forge hdf5=1.14.3
+# mamba install -c conda-forge bison flex
+# mamba install -c conda-forge ptscotch
+```
+
+### Directories
+```
+export PETSC_DIR=$HOME/petsc/petsc-3.19.6
+export PETSC_ARCH=linux-cuda12
+```
+
+## Build PETSc
+
+```
+mkdir -p $PETSC_DIR && cd $PETSC_DIR/..
+wget http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.19.6.tar.gz
+tar -xzf petsc-lite-3.19.6.tar.gz
+cd $PETSC_DIR
+./configure \
+    --with-cuda-dir=/opt/nvidia/hpc_sdk/Linux_x86_64/24.11/cuda \
+    --with-cuda=1 \
+    --with-cuda-arch=sm_89 \
+    --with-cudac=nvcc \
+    --with-cc=$CONDA_PREFIX/bin/mpicc \
+    --with-cxx=$CONDA_PREFIX/bin/mpicxx \
+    --download-f2cblaslapack \
+    --download-hdf5 \
+    --download-hypre \
+    --download-metis \
+    --download-parmetis \
+    --download-ptscotch
+
+# ./configure \
+#    --with-cc=$CONDA_PREFIX/bin/mpicc \
+#    --with-cxx=$CONDA_PREFIX/bin/mpicxx \
+#    --with-fc=0 \
+#    --with-cuda=1 \
+#    --with-cuda-arch=sm_89 \
+#    --with-hdf5-dir=$CONDA_PREFIX \
+#    --with-hypre-dir=$CONDA_PREFIX \
+#    --with-ptscotch-dir=$CONDA_PREFIX \
+#    --download-metis \
+#    --download-f2cblaslapack \
+#    --download-parmetis \
+```
+-->
+
+<!--
 PetIBM only officially supports Linux systems. MacOS and Windows may or may not work. We will not
 provide any assist to issues of using PetIBM on MacOS and Windows.
 
@@ -364,3 +465,4 @@ $ make install
 
 Examples files are installed at `<PetIBM installation>/share/petibm/examples`. For example, for
 installation with `conda`/`mamba`, the `<PetIBM installation>` is `$CONDA_PREFIX`.
+-->
