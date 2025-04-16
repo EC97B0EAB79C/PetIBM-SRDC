@@ -27,10 +27,7 @@ To configure:
 ```shell
 $ mkdir build
 $ cd build
-$ cmake -DPETIBM_DIR=${CONDA_PREFIX} \
-    -DYAMLCPP_DIR=$CONDA_PREFIX \
-    -DSYMENGINE_DIR=$CONDA_PREFIX \
-    ../
+$ cmake -DPETIBM_DIR=${CONDA_PREFIX} ../
 $ make all -j $(nproc)
 ```
 
