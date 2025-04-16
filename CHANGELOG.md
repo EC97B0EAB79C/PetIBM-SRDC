@@ -22,6 +22,16 @@ This changelog includes changes made from [PetIBM](https://github.com/barbagroup
 ### Changed
 - Added `iterations-0.txt` to `examples/.gitignore`
 
+## 2025.04.16
+### Added
+- Added scripts
+    - `setup_env.sh`: Setting mamba and conda
+    - `start_env.sh`: Starting mamba and conda env
+
+### Changed
+- Simplified `README.md` for API examples
+- Added field in `.gitignore`
+
 <!-- 
 ## 
 ### Added
