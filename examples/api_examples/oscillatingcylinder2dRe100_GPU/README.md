@@ -7,8 +7,8 @@ Build procedure is the same to the basic API example, `liddrivencavity2d`. Here 
 ```shell
 $ mkdir build
 $ cd build
-$ cmake -DPETIBM_DIR=<petibm installation path> ../
-$ make all -j <number of CPUs>
+$ cmake -DPETIBM_DIR=${CONDA_PREFIX} ../
+$ make all -j $(nproc)
 ```
 
 The executable `oscillatingcylinder` will be available in the `build` folder (i.e., the current folder).

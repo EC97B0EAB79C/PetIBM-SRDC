@@ -27,15 +27,11 @@ To configure:
 ```shell
 $ mkdir build
 $ cd build
-$ cmake -DPETIBM_DIR=<path to PetIBM installation> ../
-```
-
-`<path to PetIBM installation>` will simply be `${CONDA_PREFIX}` if PetIBM was installed using `conda`/`mamba`.
-
-Then build with:
-
-```shell
-$ make all -j <number of CPUs>
+$ cmake -DPETIBM_DIR=${CONDA_PREFIX} \
+    -DYAMLCPP_DIR=$CONDA_PREFIX \
+    -DSYMENGINE_DIR=$CONDA_PREFIX \
+    ../
+$ make all -j $(nproc)
 ```
 
 To keep `CMakeLists.txt` simple, we didn't write the installation procedure in it, so there is no `make install`.

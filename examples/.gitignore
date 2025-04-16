@@ -2,6 +2,7 @@
 solution
 *.h5
 iterations.txt
+iterations-0.txt
 forces.txt
 figures
 *.out
