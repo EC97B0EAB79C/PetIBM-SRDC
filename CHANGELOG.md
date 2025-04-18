@@ -34,14 +34,14 @@ This changelog includes changes made from [PetIBM](https://github.com/barbagroup
 
 ## 2025.04.18
 ### Added
-
-### Changed
+- Added scripts
+    - `build_petibm.sh`: Build and install PetIBM from `build` directory
+    - `build_example.sh`: Build example from `build` directory
 
 ### Fixed
 - Example
     - `api_examples/liddrivencavity2d`: missing parameter in `config.yaml`
 
-### Removed
 <!-- 
 ## 
 ### Added
