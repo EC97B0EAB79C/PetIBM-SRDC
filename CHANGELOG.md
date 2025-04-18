@@ -32,6 +32,16 @@ This changelog includes changes made from [PetIBM](https://github.com/barbagroup
 - Simplified `README.md` for API examples
 - Added field in `.gitignore`
 
+## 2025.04.18
+### Added
+
+### Changed
+
+### Fixed
+- Example
+    - `api_examples/liddrivencavity2d`: missing parameter in `config.yaml`
+
+### Removed
 <!-- 
 ## 
 ### Added

@@ -81,9 +81,6 @@ int main(int argc, char **argv)
     PetscReal dt = 0.01;  // time-step size
     PetscReal t = 0.0;    // beginning time value
 
-    // flow parameter
-    PetscReal nu = 0.01;  // flow viscosity
-
     /*
      * Step 1: read simulation configurations through a YAML text file.
      */
